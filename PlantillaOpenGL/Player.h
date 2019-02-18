@@ -7,6 +7,7 @@ class Player
 public:
 	float colorR, colorG, colorB;
 
+	static int asd;
 	int vidas;
 	float x;
 	float y;
