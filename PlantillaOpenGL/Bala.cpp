@@ -44,3 +44,10 @@ void Bala::mover(float tiempoDiferencial) {
 	x += cos((angulo + 90.0f) * 3.14159f / 180.0f)*velocidad*tiempoDiferencial;
 	y += sin((angulo + 90.0f) * 3.14159f / 180.0f)*velocidad*tiempoDiferencial;
 }
+
+void Bala::reset() {
+	x = -2.0f;
+	y = -2.0f;
+	velocidad = 1.0f;
+	angulo = 0.0f;
+}

@@ -12,5 +12,6 @@ public:
 	~Bala();
 	void dibujar();
 	void mover(float tiempoDiferencial);
+	void reset();
 };
 

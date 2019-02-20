@@ -14,6 +14,7 @@ public:
 	float angulo;
 	float anguloTrayectoria;
 	float velocidadAngular;
+	float xVida;
 
 	Bala bala[5] = { Bala(), Bala(), Bala(), Bala(), Bala() };
 
@@ -23,6 +24,7 @@ public:
 	float velocidadActual;
 	float tiempoDisparo;
 	float tiempoGolpe;
+	float tiempoCorazon;
 	int balaActual;
 
 	int estadoTeclaDerecha;
@@ -31,11 +33,14 @@ public:
 	int estadoTeclaAbajo;
 
 
-	Player();
+	Player(float xVida, float posicionX, float posicionY);
 	~Player();
 	void dibujar();
 	void mover(float, int, int, int, int);
-	bool colision(float, float, float, float);
+	bool colision(float x, float boxDistanceX, float y, float boxDistanceY);
 	void disparar(int indiceBala, float tiempoDiferencial);
+
+	void dibujarVida();
+	void reset(float posicionX, float posicionY);
 };
 

@@ -12,19 +12,20 @@
 using namespace std;
 
 
-Player::Player()
+Player::Player(float xVida, float posicionX, float posicionY)
 {
 	colorR = 1.0f;
 	colorG = 1.0f;
 	colorB = 1.0f;
 
-	vidas = 3;
-	x = 0.3f;
-	y = 0.0f;
+	vidas = 10;
+	x = posicionX;
+	y = posicionY;
 	angulo = 0.0f;
 	anguloTrayectoria = 0.0f;
 	velocidadAngular = 360.0f;
 
+	this->xVida = xVida;
 	
 
 	velocidad = 0.7f;
@@ -33,6 +34,7 @@ Player::Player()
 	velocidadActual = 0.0f;
 	tiempoDisparo = 1.0f;
 	tiempoGolpe = 1.0f;
+	tiempoCorazon = 0;
 	balaActual = 0;
 
 }
@@ -40,6 +42,7 @@ Player::Player()
 
 Player::~Player()
 {
+	
 }
 
 void Player::dibujar() {
@@ -48,6 +51,7 @@ void Player::dibujar() {
 	//transformaciones
 	glTranslatef(x, y, 0.0f);
 	glRotatef(angulo, 0.0f, 0.0f, 1.0f);
+	
 
 	glBegin(GL_TRIANGLES);
 	glColor3f(colorR, colorG, colorB);
@@ -56,6 +60,8 @@ void Player::dibujar() {
 	glVertex3f(-0.05f, -0.05f, 0.0f);
 	glEnd();
 	glPopMatrix();
+
+	dibujarVida();
 }
 
 void Player::mover(float tiempoDiferencial, int derecha, int izquierda, int arriba, int abajo) {
@@ -117,4 +123,44 @@ void Player::disparar(int indiceBala,float tiempoDiferencial) {
 	bala[indiceBala].x = this->x;
 	bala[indiceBala].y = this->y;
 	bala[indiceBala].angulo = this->angulo;
+}
+
+void Player::dibujarVida(){
+	glPushMatrix();
+
+	//transformaciones
+	glTranslatef(xVida, 0.85f, 0.0f);
+	glScalef(vidas/10.0f, 1.0f, 1.0f);
+
+
+	glBegin(GL_QUADS);
+	glColor3f(colorR, colorG, colorB);
+	glVertex3f(-0.2f, 0.03f, 0.0f);
+	glVertex3f(0.2f, 0.03f, 0.0f);
+	glVertex3f(0.2f, -0.03f, 0.0f);
+	glVertex3f(-0.2f, -0.03f, 0.0f);
+	glEnd();
+	glPopMatrix();
+}
+
+void Player::reset(float posicionX, float posicionY) {
+	vidas = 10;
+	angulo = 0.0f;
+	anguloTrayectoria = 0.0f;
+	velocidadAngular = 360.0f;
+
+	this->x = posicionX;
+	this->y = posicionY;
+
+	velocidad = 0.7f;
+	aceleracion = 0.3f;
+	desaceleracion = 0.2f;
+	velocidadActual = 0.0f;
+	tiempoDisparo = 1.0f;
+	tiempoGolpe = 1.0f;
+	balaActual = 0;
+
+	for (int i = 0; i < 5; i++) {
+		bala[i].reset();
+	}
 }
