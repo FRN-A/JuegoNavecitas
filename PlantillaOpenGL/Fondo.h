@@ -5,21 +5,6 @@ public:
 	Fondo();
 	~Fondo();
 
-	//asteroide (objeto que baja la vida}9
-	void asteroide();
-	void crater1();
-	void crater2();
-	void crater3();
-	void crater4();
-	void crater5();
-	void crater6();
-	void crater7();
-
-	//corazon (objeto que sube vida)
-	void medioCirculo1();
-	void medioCirculo2();
-	void triangulo();
-
 	//Estrelas
 	void estrella1Triangulo1();
 	void estrella1Triangulo2();
@@ -71,10 +56,20 @@ public:
 	//Satelite
 	void circuloSatelite();
 	void ovaloSatelite();
+	void ventanaCuadrado();
 	void cuadrado1Satelite();
 	void cuadrado2Satelite();
 	void lineasSatelite();
 
+	//Estrella Fugas
+	void estrellaCola();
+	void estrellaFugas();
+	void estrellaFugas2();
+
+	//Sol
+	void planetaSol();
+	void lineasSol();
+	
 
 	void dibujar();
 };
