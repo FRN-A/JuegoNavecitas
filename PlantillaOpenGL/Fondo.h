@@ -13,7 +13,6 @@ public:
 	void crater4();
 	void crater5();
 	void crater6();
-	void crater7();
 
 	//corazon (objeto que sube vida)
 	void medioCirculo1();
@@ -71,11 +70,22 @@ public:
 	//Satelite
 	void circuloSatelite();
 	void ovaloSatelite();
+	void ventanaCuadrado();
 	void cuadrado1Satelite();
 	void cuadrado2Satelite();
 	void lineasSatelite();
 
+	//Estrella Fugas
+	void estrellaCola();
+	void estrellaFugas();
+	void estrellaFugas2();
+
+	//Sol
+	void planetaSol();
+	void lineasSol();
+
 
 	void dibujar();
+
 };
 
